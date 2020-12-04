@@ -1,0 +1,10 @@
+@users.map do |user|
+  {
+    id: user.id,
+    first_name: user.first_name,
+    last_name: user.last_name,
+    #Street_address: user.street_address, when creating a model I added street address with a capital S
+    email: user.email,
+    phone_number: user.phone_number,
+  }
+end
