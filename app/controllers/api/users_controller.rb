@@ -27,8 +27,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @users = User.all
-    render "show.html.erb"
+    @user = User.find_by(id: params[:id])
+    render "show.json.jb"
   end
 
   def update
@@ -45,7 +45,9 @@ class Api::UsersController < ApplicationController
     render "show.json.jb"
   end
 
-  #*****************dec 4 2020 today i ended by cheking if my update function is working   so far bearly started to look into it
+  #  def edit
+
+  #  end
 
   def destroy
     user_id = params[:id]
