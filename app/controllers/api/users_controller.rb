@@ -12,10 +12,11 @@ class Api::UsersController < ApplicationController
     user = User.new(
       first_name: params[:first_name],
       last_name: params[:last_name],
-      Street_address: params[:Street_address],
+      street_address: params[:street_address],
       email: params[:email],
       phone_number: params[:phone_number],
-      #password: params[:password], need to add password in schema
+      password: params[:password],
+      password_confirmation: params[:password_confirmation],
 
     )
     if user.save
@@ -30,17 +31,20 @@ class Api::UsersController < ApplicationController
     render "show.html.erb"
   end
 
-  # def update
-  #   @users = current_user
-  #     first_name: params[:first_name] || @user.first_name,
-  #     last_name: params[:last_name]|| @user.last_name,
-  #     street_address: params[:street_address]|| @user.street_address,
-  #     email: params[:email]|| @user.email,
-  #     phone_number: params[:phone_number]|| @user.phone_number,
-  #     password: params[:password]|| @user.password,
-  #   @users.save
-  #   render "show.json.jb"
-  # end
+  def update
+    @user = User.find_by(id: params[:id])
+
+    @user.first_name = params[:first_name] || @user.first_name
+    @user.last_name = params[:last_name] || @user.last_name
+    @user.street_address = params[:street_address] || @user.street_address
+    @user.email = params[:email] || @user.email
+    @user.phone_number = params[:phone_number] || @user.phone_number
+    @user.password = params[:password] || @user.password
+
+    @user.save
+    render "show.json.jb"
+  end
+
   #*****************dec 4 2020 today i ended by cheking if my update function is working   so far bearly started to look into it
 
   def destroy

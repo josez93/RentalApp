@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     #get "/user/:id/:edit" => "/user#edit"
     patch "/users/:id" => "users#update"
     delete "/users/:id" => "users#destroy"
+
+    post "/sessions" => "sessions#create"
   end
 end
