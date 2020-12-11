@@ -1,4 +1,6 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
     @products = Product.all
     render "index.json.jb"
@@ -9,6 +11,7 @@ class Api::ProductsController < ApplicationController
       name: params[:name],
       inventory: params[:inventory],
       image_url: params[:image_url],
+      price: params[:price],
     )
     if product.save
       render json: { message: "Product created successfully" }, status: :created
@@ -28,7 +31,7 @@ class Api::ProductsController < ApplicationController
     @product.name = params[:name] || @product.name
     @product.inventory = params[:inventory] || @product.inventory
     @product.image_url = params[:image_url] || @product.image_url
-
+    @product.price = params[:price] || @product.price
     @product.save
     render "show.json.jb"
   end

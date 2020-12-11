@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     #get "/user/:id/:edit" => "/user#edit"
     patch "/users/:id" => "users#update"
     delete "/users/:id" => "users#destroy"
-
     post "/sessions" => "sessions#create"
 
     get "/products" => "products#index"
@@ -21,5 +20,13 @@ Rails.application.routes.draw do
     # get "/products/:id/:edit" => "products#edit"
     patch "/products/:id" => "products#update"
     delete "/products/:id" => "products#destroy"
+
+    get "/orders" => "orders#index"
+    # get "/orders" => "orders#new"
+    post "/orders" => "orders#create"
+    get "/orders/:id" => "orders#show"
+    # get "orders/:id/:edit" => "orders#edit"
+    patch "/orders/:id" => "orders#update"
+    delete "/orders/:id" => "orders#destroy"
   end
 end
