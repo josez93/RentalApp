@@ -34,6 +34,11 @@ class Api::ProductsController < ApplicationController
     @product.price = params[:price] || @product.price
     @product.save
     render "show.json.jb"
+    # if @product.save && authenticate_admin
+    #   render "show.json.jb"
+    # else
+    #   render json: { message: "no" }
+    # end
   end
 
   def destroy

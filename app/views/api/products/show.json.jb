@@ -3,5 +3,5 @@
   inventory: @product.inventory,
   image_url: @product.image_url,
   price: @product.price,
-
+  id: @product.id
 }

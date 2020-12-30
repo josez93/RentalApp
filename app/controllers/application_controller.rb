@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception, if: -> { request.format.html? }
+  protect_from_forgery with: :null_session
 
   def current_user
     auth_headers = request.headers["Authorization"]
@@ -28,8 +28,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin
-    unless current_user.admin == true && current_user
-      render json: { message: "NOT AUTHORIZED" }, status: :unauthorized
+    unless current_user && current_user.admin == true
+      render json: {}, status: :unauthorized
+      puts "hello"
     end
   end
 end
