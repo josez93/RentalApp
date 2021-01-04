@@ -7,10 +7,12 @@ class Api::ProductsController < ApplicationController
   end
 
   def create
+    response = Cloudinary::Uploader.upload(params[:image_url], resource_type: :auto)
+    cloudinary_url = response["secure_url"],
     product = Product.new(
       name: params[:name],
       inventory: params[:inventory],
-      image_url: params[:image_url],
+      image_url: cloudinary_url || params[:image_url],
       price: params[:price],
     )
     if product.save
