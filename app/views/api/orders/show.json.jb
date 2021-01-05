@@ -1,4 +1,1 @@
-{
-  product_id: @order.product_id,
-  quantity: @order.quantity,
-}
+render partial: "order.json.jb", locals: { order: @order }

@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :carted_product
-  has_many :order through: :carted_product
-  has_many :product through: :carted_product
+  has_many :carted_products
+  has_many :orders, through: :carted_products
+  has_many :products, through: :carted_products
 
   # has_many :orders
   # has_many :products, through: :orders
