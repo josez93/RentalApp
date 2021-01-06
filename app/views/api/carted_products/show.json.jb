@@ -1,9 +1,4 @@
-#   product_id: @carted_product.product_id,
-{
-  id: @carted_product.id,
-  user_id: @carted_product.user_id,
-  product_id: @carted_product.product_id,
-  quantity: @carted_product.quantity,
-  status: @carted_product.status,
-  order_id: @carted_product.order_id,
-}
+carted_product = render partial: "carted_product.json.jb", locals: { carted_product: @carted_product }
+# carted_product[:product] =
+#   render partial: "/api/products/product.json.jb", locals: { product: @product }
+carted_product

@@ -1,0 +1,7 @@
+{
+  id: product.id,
+  name: product.name,
+  inventory: product.inventory,
+  image_url: product.image_url,
+  price: product.price,
+}

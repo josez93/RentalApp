@@ -13,14 +13,14 @@ class Api::OrdersController < ApplicationController
       user_id: current_user.id,
     )
     @order.save
-    carted_products.update_all(status: "Rented", order_id: @orde.id)
+    carted_products.update_all(status: "Rented", order_id: @order.id)
     @order.update_totals
     render "show.json.jb"
   end
 
   def show
     @order = Order.find_by(id: params[:id])
-    if order.user_id == current_user.id
+    if @order.user_id == current_user.id
       render "_order.json.jb"
     else
       render json: { message: "Not Authorized!!" }
@@ -29,8 +29,8 @@ class Api::OrdersController < ApplicationController
 
   def update
     @order = Order.find_by(id: params[:id])
-
-    @order.product_id = params[:product_id] || @order.product_id
+    # @order.carted_product.product.product_id = params[:product_id]
+    # @order.product_id = params[:product_id] || @order.product_id
     @order.quantity = params[:quantity] || @order.quantity
     @order.save
     render "_order.json.jb"
