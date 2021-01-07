@@ -7,4 +7,5 @@
   order_id: carted_product.order_id,
   user_id: carted_product.user_id,
   product: carted_product.product,
+  booking_date: carted_product.booking_date,
 }

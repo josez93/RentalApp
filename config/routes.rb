@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     patch "/products/:id" => "products#update"
     delete "/products/:id" => "products#destroy"
 
+    get "/products_inventory/" => "products_inventory#show"
+
     get "/orders" => "orders#index"
     # get "/orders" => "orders#new"
     post "/orders" => "orders#create"
