@@ -1,4 +1,5 @@
 class Api::ProductsInventoryController < ApplicationController
+
   def show
     @total = 0
     @product_day_inventory = CartedProduct.where(status: "Rented", booking_date: params[:booking_date], product_id: params[:product_id])
